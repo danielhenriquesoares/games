@@ -34,11 +34,17 @@ import './sass/main.scss';
     instagram.src = './img/instagram.svg';
     send.src = './img/send.svg';
 
-    try {
-        let ticTacToe = new TicTacToe();
-        ticTacToe.onInit();
-    } catch(e) {
-        console.error(e);
-    }
+    let gridSize = document.getElementById('select-grid-size');
+    gridSize.addEventListener('change', ev => {
+        console.debug(ev.target.value);
+
+        try {
+            document.getElementById('game-area').style.visibility = 'visible';
+            let ticTacToe = new TicTacToe(+ev.target.value);
+            ticTacToe.onInit();
+        } catch(e) {
+            console.error(e);
+        }
+    });
     
 }).call();

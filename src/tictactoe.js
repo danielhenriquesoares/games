@@ -21,7 +21,7 @@ export class TicTacToe extends SwordGames {
         this.buildCols();
         this.buildLtrDiag();
         this.buildRtrDiag();
-
+console.debug(this.winningConditions, this.boardSize);
         this.buildBoard();
 
         this.setEventListeners();
@@ -135,18 +135,36 @@ export class TicTacToe extends SwordGames {
 
         for (let i = 0; i < winningConditionsLength; i++) {
             winningCondition = this.winningConditions[i];
-            let cell1 = this.boardStatus[winningCondition[0]],
-                cell2 = this.boardStatus[winningCondition[1]],
-                cell3 = this.boardStatus[winningCondition[2]];
 
-            if (cell1 === '' || cell2 === '' || cell3 === '') {
+            let test = [];
+
+            for (let j = 0; j < this.boardSize; j++) {
+                test.push(this.boardStatus[winningCondition[j]]);
+            }
+
+            if (test.some(elem => {return elem === '';})) {
                 continue;
             }
 
-            if (cell1 === cell2 && cell2 === cell3) {
+            if (test.every(elem => elem === test[0])) {
                 victory = true;
                 break;
             }
+
+            /* 
+            let cell1 = this.boardStatus[winningCondition[0]],
+                        cell2 = this.boardStatus[winningCondition[1]],
+                        cell3 = this.boardStatus[winningCondition[2]];
+
+                    if (cell1 === '' || cell2 === '' || cell3 === '') {
+                        continue;
+                    }
+
+                    if (cell1 === cell2 && cell2 === cell3) {
+                        victory = true;
+                        break;
+                    }
+             */
         }
         
         if (victory) {
