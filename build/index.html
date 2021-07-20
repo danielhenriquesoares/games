@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hello Webpack</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+		<link rel="stylesheet" href="./main.css">
+	</head>
+	<body style="color: #2C2E30;">
+		<header>
+			<div class="header-inner">
+				<img id="sword-logo" height="50px" src="" alt="Sword logo" />
+				<div>
+					<div>Frontend Developer</div>
+					<div>Challenge</div>
+				</div>
+			</div>
+		</header>
+		<section class="info">
+			<div>
+				<div class="info-container">
+					<div class="photo">
+						<span>(Photo area)</span>
+					</div>
+					<div class="info-personal">
+						<div><span >Chuck Norris</span></div>
+						<div><span>Age:</span> 99</div>
+						<div><span>Location:</span> Porto</div>
+						<div><span>Occupation:</span> Developer</div>
+					</div>
+				</div>
+				<div class="info-about-me">
+					<div>About me:</div>
+					<div>
+						My Name Is Chuck Norris lorem empus id fringilla molestie 
+						ornare diam in olestie ipsum etium rosn ollicitudin est, 
+						porttitor amet hitmassa Done cporttitor dolor shit dolor 
+						kiren lorem nisl molestie pretium etfring.
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="game-area" style="display: flex; flex-flow: column;">
+			<div style="display: flex;flex-flow: column;align-items: center;">
+				<h1 style="font-weight: bold; font-size: 24px;">Tic Tac Toe Games</h1>
+				<div style="margin-top: 1em;">Welcome to the best game in the world.</div>
+				<div style="margin-top: 2em;margin-bottom: 2em;">some other stuff</div>
+			</div>
+			<div style="display: flex; align-items: center;">
+				<div style="width: 25%; display: flex;flex-flow: column;justify-content: flex-start;font-weight: bold; font-size: 16px;">
+					<div style="display: flex;flex-flow: column;align-items: center;">
+						<div>Player 1</div>
+						<div id="player1count" style="font-size: 20px;">0</div>
+					</div>
+				</div>
+				<div style="width: 50%;display: flex; flex-flow: column;border: 1px solid #D8D8D8;">
+					<div id="board"></div>
+					<div class="time-counter"></div>
+				</div>
+				<div style="width: 25%;display: flex;flex-flow: column;justify-content: flex-start; font-weight: bold; font-size: 16px;">
+					<div style="display: flex;flex-flow: column;align-items: center;">
+						<div>Player 2</div>
+						<div id="player2count" style="font-size: 20px;">0</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="statistics"></section>
+		<footer class="footer">
+			<div>
+				<div>
+					<div>About page</div>
+					<div style="font-size: 10px;margin-top: 1em;height: 23px;">Play Tic-Tac-Toe anytime!</div>
+					<div style="font-size: 10px;margin-top: 1em;height: 32px;">Created by Chuck Norris</div>
+				</div>
+				<div>
+					<div>Contacts</div>
+					<div style="font-size: 10px;margin-top: 1em;height: 23px;">(+351) 123 456 789</div>
+					<div style="font-size: 10px;margin-top: 1em;height: 32px;">Rua Sá da Bandeira, 111, Porto</div>
+				</div>
+				<div>
+					<div>Stay in touch</div>
+					<div style="margin-top: 1em;">
+						<a href="#"><img id="facebook" height="20px" src="" alt="facebook"/></a>
+						<a href="#"><img id="twitter" height="20px" src="" alt="twitter"/></a>
+						<a href="#"><img id="instagram" height="20px" src="" alt="instagram"/></a>
+					</div>
+					<div style="margin-top: 1em;">
+						<div style="height: 32;display: inline-flex;"	>
+							<input type="email" placeholder="Subscribe our games" style="outline: none;border: none;height: 30px;margin: 0;" />
+							<button style="margin: 0;border: none;width: 30px;height: 32px;"><img id="send" src="" alt="send"/></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script type="text/javascript" src="./bundle.js"></script>
+	</body>
+</html>

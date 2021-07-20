@@ -1,0 +1,216 @@
+@import './font';
+@import './pallete';
+@import './mixins';
+
+body {
+    background-color: $white;
+    font-family: 'Glacial Indifference';
+    padding: 0 0;
+    margin: 0 0;
+    font-size: 12px;
+    
+    & > header {
+        height: 80px;
+        background-color: $main2;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        & > .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 80px;
+            padding-left: 3em;
+            padding-right: 3em;
+
+            & > img {
+                width: 100%;
+                height: auto;
+                max-width: 150px;
+            }
+
+            & > div {
+                text-align: end;
+
+                & > div {
+                    &:first-of-type {
+                        font-weight: bold;
+                    }
+
+                    &:last-of-type {
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+    }
+
+    & > .info {
+        padding: 3em;
+        margin-top: 80px;
+
+        & > div {
+            display: flex;
+            align-items: center;
+            height: auto;
+            min-height: 21vh;
+            justify-content: space-between;
+
+            @include for-phone-only {
+                flex-flow: column;
+                justify-content: unset;
+            }
+
+            & > .info-container {
+                display: flex; 
+                height: auto;
+
+                @include for-phone-only {
+                    flex-flow: column;
+                    align-items: center;
+                }
+
+                & > .photo {
+                    height: 200px;
+                    border-radius: 100%;
+                    border: 1px solid $main2;
+                    width: 200px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                & > .info-personal {
+                    display: flex;
+                    flex-flow: column;
+                    height: auto;
+                    justify-content: flex-end;
+                    font-size: 16px;
+                    margin-left: 1em;
+                    padding: 5px;
+
+                    @include for-phone-only {
+                        margin-left: unset;
+                        text-align: center;
+                    }
+
+                    & > div {
+                        margin: 5px;
+                        
+                        &:first-of-type {
+                            font-size: 37px;
+                        }
+
+                        & > span {
+                            color: $main3;
+                        }
+                    }
+                }
+            }
+
+            & > .info-about-me {
+                height: 200px;
+                display: flex;
+                flex-flow: column;
+                width: 33%;
+                justify-content: flex-end;
+                text-align: right;
+                font-size: 16px;
+
+                @include for-phone-only {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    & > .game-area {
+        height: auto;
+        min-height: 21vh;
+        padding: 3em;
+        background-color: $main1;
+
+        .flex-container {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-around;
+            line-height:30px;
+        }
+
+        .flex-item {
+            background: $primaryButton;
+            margin: 5px;
+            color: $white;
+            font-weight: bold;
+            font-size: 1.5em;
+            text-align: center;
+            flex: 1 0 auto;
+            height:auto;
+
+            &:before {
+                content:'';
+                float:left;
+                padding-top:100%;
+            }
+
+            &.player1 {
+                background-image: url('../img/X_dark.svg');
+            }
+
+            &.player1Win {
+                background-image: url('../img/X_bright.svg');
+            }
+
+            &.player2 {
+                background-image: url('../img/O_dark.svg');
+            }
+
+            &.player2Win {
+                background-image: url('../img/O_bright.svg');
+            }
+
+            &.winning-cell {
+                animation: blinker 1s linear infinite;
+            }
+        }
+    }
+
+    & > .statistics {
+        height: 20rem;
+    }
+
+    & > footer {
+        background-color: $main1; 
+        padding: 3em;
+
+        & > div {
+            height: auto;
+            min-height: 21vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @include for-phone-only {
+                flex-flow: column;
+                text-align: center;
+            }
+
+            & > div {
+                display: flex;
+                flex-flow: column;
+                justify-content: flex-start;
+            }
+        }
+    }
+}
+  
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,1 @@
+npm run-script run - triggers build creation and launches a dev server

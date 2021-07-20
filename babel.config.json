@@ -1,0 +1,16 @@
+{
+    "sourceMaps": true,
+    "presets": [
+      [
+        "@babel/preset-env"
+      ]
+    ],
+    "plugins": [
+        [
+            "transform-remove-console",
+            {
+                "exclude": [ "error", "warn", "debug"]
+            }
+        ]
+    ]
+  }
