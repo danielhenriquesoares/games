@@ -28,11 +28,11 @@ import './sass/main.scss';
         instagram = document.getElementById('instagram'),
         send = document.getElementById('send');
 
-    logo.src = './img/SWORD_Health_logo.svg';
-    facebook.src = './img/facebook.svg';
-    twitter.src = './img/twitter.svg';
-    instagram.src = './img/instagram.svg';
-    send.src = './img/send.svg';
+    logo.src = './assets/img/SWORD_Health_logo.svg';
+    facebook.src = './assets/img/facebook.svg';
+    twitter.src = './assets/img/twitter.svg';
+    instagram.src = './assets/img/instagram.svg';
+    send.src = './assets/img/send.svg';
 
     let gridSize = document.getElementById('select-grid-size');
     gridSize.addEventListener('change', ev => {

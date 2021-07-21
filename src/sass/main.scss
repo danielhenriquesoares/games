@@ -159,19 +159,19 @@ body {
             }
 
             &.player1 {
-                background-image: url('../img/X_dark.svg');
+                background-image: url('../assets/img/X_dark.svg');
             }
 
             &.player1Win {
-                background-image: url('../img/X_bright.svg');
+                background-image: url('../assets/img/X_bright.svg');
             }
 
             &.player2 {
-                background-image: url('../img/O_dark.svg');
+                background-image: url('../assets/img/O_dark.svg');
             }
 
             &.player2Win {
-                background-image: url('../img/O_bright.svg');
+                background-image: url('../assets/img/O_bright.svg');
             }
 
             &.winning-cell {

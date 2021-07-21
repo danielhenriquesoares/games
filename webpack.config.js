@@ -1,5 +1,8 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MinifyPlugin = require("babel-minify-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
 	mode: 'development',
@@ -34,6 +37,20 @@ module.exports = {
 	plugins: [
 		new MiniCssExtractPlugin({ // define where to save the file
 			filename: 'main.css'
-		  })
+		}),
+		new MinifyPlugin(),
+		new HtmlWebpackPlugin({
+			template: './src/index.template.html',
+			filename: 'index.html'
+		}),
+		new CopyWebpackPlugin({
+			patterns: [{
+				from: './src/assets/fonts',
+				to: 'assets/fonts'
+			}, {
+				from: './src/assets/img',
+				to: 'assets/img'
+			}]
+		})
 	]
 };
