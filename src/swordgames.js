@@ -4,6 +4,10 @@ export class SwordGames {
 		this.player = '1';
 		this.boardStatus = [];
 		this.winningConditions = [];
+		this.roundWinsByPlayer = {
+            player1: 0,
+            player2: 0
+        };
 		/* this.statistics = {
 
 		} */

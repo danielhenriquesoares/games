@@ -4,10 +4,6 @@ export class TicTacToe extends SwordGames {
     constructor(boardSize = 3) {
         super();
         this.boardSize = boardSize;
-        this.roundWinsByPlayer = {
-            player1: 0,
-            player2: 0
-        };
     }
 
     onInit() {
@@ -21,7 +17,7 @@ export class TicTacToe extends SwordGames {
         this.buildCols();
         this.buildLtrDiag();
         this.buildRtrDiag();
-console.debug(this.winningConditions, this.boardSize);
+
         this.buildBoard();
 
         this.setEventListeners();

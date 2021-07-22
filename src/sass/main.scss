@@ -180,8 +180,18 @@ body {
         }
     }
 
-    & > .statistics {
-        height: 20rem;
+    & > .statistics-container {
+        height: 21vh;
+        display: flex; 
+        flex-flow: column; 
+        align-items: center;
+        padding: 3em;
+        text-align: center;
+
+        & > .statistics-title {
+            display: flex; 
+            flex-flow: column;
+        }
     }
 
     & > footer {
