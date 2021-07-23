@@ -132,50 +132,110 @@ body {
         min-height: 21vh;
         padding: 3em;
         background-color: $main1;
+        display: flex; 
+        flex-flow: column;
 
-        .flex-container {
-            padding: 0;
-            margin: 0;
+        & > .game-area-title {
             display: flex;
-            flex-flow: row;
-            justify-content: space-around;
-            line-height:30px;
+            flex-flow: column;
+            align-items: center;
+
+            & > h1 {
+                font-weight: bold; 
+                font-size: 24px;
+            }
+
+            & > div {
+                &:first-of-type {
+                    margin-top: 1em;
+                }
+
+                &:last-of-type {
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+                }
+            }
         }
 
-        .flex-item {
-            background: $primaryButton;
-            margin: 5px;
-            color: $white;
-            font-weight: bold;
-            font-size: 1.5em;
-            text-align: center;
-            flex: 1 0 auto;
-            height:auto;
+        & > #game-area {
+            display: flex; 
+            align-items: center;
+            visibility: hidden;
 
-            &:before {
-                content:'';
-                float:left;
-                padding-top:100%;
+            & > .player {
+                width: 25%; 
+                display: flex;
+                flex-flow: column;
+                justify-content: flex-start;
+                font-weight: bold; 
+                font-size: 16px;
+
+                & > .player-inner {
+                    display: flex;
+                    flex-flow: column;
+                    align-items: center;
+
+                    & > .current-player {
+                        color: $secundaryButton;
+                    }
+
+                    & > .player-count {
+                        font-size: 20px;
+                    }
+                }
             }
 
-            &.player1 {
-                background-image: url('../assets/img/X_dark.svg');
-            }
+            & > .board-container {
+                width: 50%;
+                display: flex; 
+                flex-flow: column;
+                border: 1px solid $main2;
 
-            &.player1Win {
-                background-image: url('../assets/img/X_bright.svg');
-            }
-
-            &.player2 {
-                background-image: url('../assets/img/O_dark.svg');
-            }
-
-            &.player2Win {
-                background-image: url('../assets/img/O_bright.svg');
-            }
-
-            &.winning-cell {
-                animation: blinker 1s linear infinite;
+                .flex-container {
+                    padding: 0;
+                    margin: 0;
+                    display: flex;
+                    flex-flow: row;
+                    justify-content: space-around;
+                    line-height:30px;
+                }
+        
+                .flex-item {
+                    background: $primaryButton;
+                    margin: 5px;
+                    color: $white;
+                    font-weight: bold;
+                    font-size: 1.5em;
+                    text-align: center;
+                    flex: 1 0 auto;
+                    height:auto;
+        
+                    &:before {
+                        content:'';
+                        float:left;
+                        padding-top:100%;
+                    }
+        
+                    &.player1 {
+                        background-image: url('../assets/img/X_dark.svg');
+                    }
+        
+                    &.player1Win {
+                        background-image: url('../assets/img/X_bright.svg');
+                    }
+        
+                    &.player2 {
+                        background-image: url('../assets/img/O_dark.svg');
+                    }
+        
+                    &.player2Win {
+                        background-image: url('../assets/img/O_bright.svg');
+                    }
+        
+                    &.winning-cell {
+                        animation: blinker 1s linear infinite;
+                    }
+                }
             }
         }
     }

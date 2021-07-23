@@ -1,16 +1,9 @@
 import {TicTacToe} from './tictactoe';
 import './sass/main.scss';
-/* import swordLogo from './img/SWORD_Health_logo.svg'; */
 
 (function() {
     "use strict";
-    console.debug("hello webpack");
 
-    /* window.onscroll(ev => {
-        let limit = 150;
-
-        console.debug(document.documentElement.scrollTop);
-    }); */
     window.addEventListener("scroll", () => {
         let limit = 150;
 
@@ -19,7 +12,6 @@ import './sass/main.scss';
         } else {
             document.querySelector('header').style.opacity = 1;
         }
-        console.debug(document.documentElement.scrollTop);
     });
 
     let logo = document.getElementById('sword-logo'),
@@ -36,7 +28,6 @@ import './sass/main.scss';
 
     let gridSize = document.getElementById('select-grid-size');
     gridSize.addEventListener('change', ev => {
-        console.debug(ev.target.value);
 
         try {
             document.getElementById('game-area').style.visibility = 'visible';

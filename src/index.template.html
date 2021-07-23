@@ -39,11 +39,11 @@
 				</div>
 			</div>
 		</section>
-		<section class="game-area" style="display: flex; flex-flow: column;">
-			<div style="display: flex;flex-flow: column;align-items: center;">
-				<h1 style="font-weight: bold; font-size: 24px;">Tic Tac Toe Games</h1>
-				<div style="margin-top: 1em;">Welcome to the best game in the world.</div>
-				<div style="margin-top: 2em;margin-bottom: 2em;">
+		<section class="game-area">
+			<div class="game-area-title">
+				<h1>Tic Tac Toe Games</h1>
+				<div>Welcome to the best game in the world.</div>
+				<div>
 					<label for="select-grid-size">Select grid size: </label>
 					<select id="select-grid-size">
 						<option selected>---</option>
@@ -53,21 +53,21 @@
 					</select>
 				</div>
 			</div>
-			<div id="game-area" style="display: flex; align-items: center;visibility: hidden;">
-				<div style="width: 25%; display: flex;flex-flow: column;justify-content: flex-start;font-weight: bold; font-size: 16px;">
-					<div style="display: flex;flex-flow: column;align-items: center;">
-						<div>Player 1</div>
-						<div id="player1count" style="font-size: 20px;">0</div>
+			<div id="game-area">
+				<div class="player">
+					<div class="player-inner">
+						<div id="player1">Player 1</div>
+						<div class="player-count" id="player1count">0</div>
 					</div>
 				</div>
-				<div style="width: 50%;display: flex; flex-flow: column;border: 1px solid #D8D8D8;">
+				<div class="board-container">
 					<div id="board"></div>
 					<div class="time-counter"></div>
 				</div>
-				<div style="width: 25%;display: flex;flex-flow: column;justify-content: flex-start; font-weight: bold; font-size: 16px;">
-					<div style="display: flex;flex-flow: column;align-items: center;">
-						<div>Player 2</div>
-						<div id="player2count" style="font-size: 20px;">0</div>
+				<div class="player">
+					<div class="player-inner">
+						<div id="player2">Player 2</div>
+						<div class="player-count" id="player2count">0</div>
 					</div>
 				</div>
 			</div>

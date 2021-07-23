@@ -22,7 +22,7 @@ export class TicTacToe extends SwordGames {
 
         this.setEventListeners();
 
-
+        super.highlightSelectedPlayer(true);
     }
 
     buildRows() {
@@ -179,9 +179,15 @@ export class TicTacToe extends SwordGames {
 
 
             this.roundWinsByPlayer['player'+this.player] += 1;
+            // update player count
+            this.updatePlayerCount();
+
+
             // first player to get 5 rounds is the winner
+            this.restartGame();
 
             if (this.roundWinsByPlayer.player1 === 5 || this.roundWinsByPlayer.player2 === 5) {
+                // reset everything
                 // display congrats message and scroll to next section
             }
 
@@ -201,18 +207,6 @@ export class TicTacToe extends SwordGames {
 
     managePlayerChange() {
         this.player = this.player === '1' ? '2' : '1';
-    }
-
-    restartGame() {
-        this.player = '1';
-        this.boardStatus.fill('');
-
-        let boardCells = document.querySelectorAll('.flex-item'),
-            boardCellsLength = boardCells.length,
-            appliedClasses = ['player1', 'player2', 'player1Win', 'player2Win', 'winning-cell'];
-
-        for (let i = 0; i < boardCellsLength; i++) {
-            boardCells[i].classList.remove(...appliedClasses);
-        }
+        super.highlightSelectedPlayer();
     }
 }
