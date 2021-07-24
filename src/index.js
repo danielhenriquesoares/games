@@ -8,7 +8,7 @@ import './sass/main.scss';
         let limit = 150;
 
         if (document.documentElement.scrollTop > limit) {
-            document.querySelector('header').style.opacity = 0;
+            document.querySelector('header').style.opacity = 0.9;
         } else {
             document.querySelector('header').style.opacity = 1;
         }
@@ -28,9 +28,12 @@ import './sass/main.scss';
 
     let gridSize = document.getElementById('select-grid-size');
     gridSize.addEventListener('change', ev => {
-
+        gridSize.setAttribute('disabled', 'disabled');
         try {
-            document.getElementById('game-area').style.visibility = 'visible';
+            document.querySelectorAll('[data-game-area]').forEach(element => {
+                element.style.visibility = 'visible';
+            });
+            document.getElementById('time-counter').style.visibility = 'visible';
             let ticTacToe = new TicTacToe(+ev.target.value);
             ticTacToe.onInit();
         } catch(e) {

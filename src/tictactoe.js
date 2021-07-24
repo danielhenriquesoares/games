@@ -23,6 +23,7 @@ export class TicTacToe extends SwordGames {
         this.setEventListeners();
 
         super.highlightSelectedPlayer(true);
+        this.clock();
     }
 
     buildRows() {
@@ -146,21 +147,6 @@ export class TicTacToe extends SwordGames {
                 victory = true;
                 break;
             }
-
-            /* 
-            let cell1 = this.boardStatus[winningCondition[0]],
-                        cell2 = this.boardStatus[winningCondition[1]],
-                        cell3 = this.boardStatus[winningCondition[2]];
-
-                    if (cell1 === '' || cell2 === '' || cell3 === '') {
-                        continue;
-                    }
-
-                    if (cell1 === cell2 && cell2 === cell3) {
-                        victory = true;
-                        break;
-                    }
-             */
         }
         
         if (victory) {
@@ -182,13 +168,12 @@ export class TicTacToe extends SwordGames {
             // update player count
             this.updatePlayerCount();
 
-
-            // first player to get 5 rounds is the winner
-            this.restartGame();
-
             if (this.roundWinsByPlayer.player1 === 5 || this.roundWinsByPlayer.player2 === 5) {
                 // reset everything
                 // display congrats message and scroll to next section
+
+                // first player to get 5 rounds is the winner
+                //this.restartGame();
             }
 
             return;
@@ -201,6 +186,8 @@ export class TicTacToe extends SwordGames {
             this.restartGame();
             return;
         }
+
+        super.triggerPopup('daniel');
 
         this.managePlayerChange();
     }

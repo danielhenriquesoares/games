@@ -1,3 +1,26 @@
 @mixin for-phone-only {
 	@media only screen and (max-width: 960px) { @content; }
 }
+
+@mixin player {
+	width: 25%; 
+	display: flex;
+	flex-flow: column;
+	justify-content: flex-start;
+	font-weight: bold; 
+	font-size: 16px;
+
+	& > .player-inner {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+
+		& > .current-player {
+			color: $secundaryButton;
+		}
+
+		& > .player-count {
+			font-size: 20px;
+		}
+	}
+}

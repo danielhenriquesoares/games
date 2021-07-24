@@ -3,11 +3,80 @@
 @import './mixins';
 
 body {
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: 12px;
+    }
+     
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+        border-radius: 10px;
+    }
+     
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    }
+
+    .modal {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+      
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; 
+        padding: 20px;
+        border: 1px solid #888;
+        width: 20%;
+        height: 200px;
+        border-radius: 4px;
+
+        h1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .body {
+            display: flex;
+            justify-content: center;
+        }
+
+        .close {
+            display: flex;
+            justify-content: flex-end;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+    
+            &:hover {
+                color:$black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    
+            &:focus {
+                color: $black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+    }
+
     background-color: $white;
     font-family: 'Glacial Indifference';
     padding: 0 0;
     margin: 0 0;
     font-size: 12px;
+    color: $main3;
     
     & > header {
         height: 80px;
@@ -16,6 +85,7 @@ body {
         top: 0;
         left: 0;
         right: 0;
+        box-shadow: #D8D8D8 0px 3px 3px -2px;
 
         & > .header-inner {
             display: flex;
@@ -112,7 +182,6 @@ body {
             }
 
             & > .info-about-me {
-                height: 200px;
                 display: flex;
                 flex-flow: column;
                 width: 33%;
@@ -163,26 +232,11 @@ body {
             visibility: hidden;
 
             & > .player {
-                width: 25%; 
-                display: flex;
-                flex-flow: column;
-                justify-content: flex-start;
-                font-weight: bold; 
-                font-size: 16px;
-
-                & > .player-inner {
-                    display: flex;
-                    flex-flow: column;
-                    align-items: center;
-
-                    & > .current-player {
-                        color: $secundaryButton;
-                    }
-
-                    & > .player-count {
-                        font-size: 20px;
-                    }
+                @include for-phone-only {
+                    display: none;
                 }
+
+                @include player;
             }
 
             & > .board-container {
@@ -190,6 +244,10 @@ body {
                 display: flex; 
                 flex-flow: column;
                 border: 1px solid $main2;
+
+                @include for-phone-only {
+                    width: 100%;
+                }
 
                 .flex-container {
                     padding: 0;
@@ -238,10 +296,52 @@ body {
                 }
             }
         }
+
+        & > #time-counter {
+            display: flex;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 2em;
+            visibility: hidden;
+
+            @include for-phone-only {
+                display: none;
+                height: 0;
+            }
+        }
+
+        & > .mobile-display {
+            display: flex;
+            visibility: hidden;
+            height: 0;
+            position: absolute;
+            margin-left: -999999px;
+
+            @include for-phone-only {
+                margin-top: 2em;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                height: auto;
+                position: relative;
+                margin-left: unset;
+
+                & > #time-counter-mobile {
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+            }
+
+            & > .player {
+                @include player;
+            }
+        }
     }
 
     & > .statistics-container {
-        height: 21vh;
+        height: auto;
+        min-height: 21vh;
         display: flex; 
         flex-flow: column; 
         align-items: center;
@@ -251,6 +351,170 @@ body {
         & > .statistics-title {
             display: flex; 
             flex-flow: column;
+
+            & > div {
+                &:first-of-type {
+                    font-size: 24px;
+                    font-weight: bold;
+                    margin-bottom: 0.5em;
+                }
+            }
+        }
+
+        & > .statistics {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            @include for-phone-only {
+                flex-flow: column;
+            }
+
+            & > .statistics-row-cell {
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+                width: 50%;
+                @include for-phone-only {
+                    width: 100%;
+                    margin-top: 2em;
+                }
+
+                &.game-victories {
+                    & > div {
+                        &:first-of-type {
+                            font-size: 16px;
+                            font-weight: bold;
+                            margin-bottom: 1em;
+                        }
+
+                        &:last-of-type {
+                            display: flex;
+                            justify-content: space-evenly;
+                            width: 100%;
+
+                            & > .game-victories-row-cell {
+                                display: flex;
+                                flex-flow: column;
+                                width: 20%;
+                                align-items: center;
+
+                                & > .game-victories-player {
+                                    font-size: 16px;
+                                    margin-bottom: 1em;   
+                                }
+
+                                & > .stats {
+                                    display: flex;
+                                    width: 100%;
+                                    justify-content: space-evenly;
+
+                                    & > .stats-inner-container {
+                                        display: flex;
+                                        flex-flow: column;
+
+                                        @include for-phone-only {
+
+                                            & + .stats-inner-container {
+                                                margin-left: 1em;
+                                            }
+                                        }
+
+                                        & > div {
+                                            &.stats-bubble {
+                                                color: $white;
+                                                width: 40px;
+                                                height: 40px;
+                                                background-color: $main2;
+                                                border-radius: 50%;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                            }
+
+                                            &:not(.stats-bubble) {
+                                                margin-top: 1.5em;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.played-matches {
+                    & > div {
+
+                        &.played-matches-column {
+                            display: flex; 
+                            flex-flow: column;
+
+                            &:last-of-type {
+                                margin-top: 2em;
+                            }
+
+                            & > div {
+                                &.played-matches-title {
+                                    font-size: 16px;
+                                    font-weight: bold;
+                                    margin-bottom: 1em; 
+                                }
+                                
+                                &.played-matches-container {
+                                    display: flex;
+
+                                    & > .played-match {
+                                        width: 12px;
+                                        height: 12px;
+                                        border-radius: 50%;
+                                        border: 1px solid $main2;
+                                        background-color: $white;
+
+                                        & + .played-match {
+                                            margin-left: 4px;
+                                        }
+                                    }
+
+                                    & > .played-match-rectangular {
+                                        width: 24px;
+                                        height: 24px;
+                                        border: 1px solid $main2;
+                                        background-color: $white;
+
+                                        & + .played-match-rectangular {
+                                            margin-left: 4px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        & > .aggregated-time-container {
+            display: flex;
+            margin-top: 2em;
+            align-items: center;
+            justify-content: center;
+            & > div {
+                display: flex;
+                flex-flow: column;
+
+                & > div {
+                    &:first-child {
+                        font-size: 16px;
+                        font-weight: bold;
+                        margin-bottom: 1em;
+                    }
+
+                    &:last-child {
+                        font-size: 24px;
+                    }
+                }
+            }
         }
     }
 
