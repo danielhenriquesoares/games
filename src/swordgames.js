@@ -19,7 +19,6 @@ export class SwordGames {
 		};
 
 		let savedStats = localStorage.getItem('stats');
-		console.debug(savedStats);
 		if (!savedStats) {
 			localStorage.setItem('stats',JSON.stringify(this.statistics));
 			return;
@@ -161,9 +160,7 @@ export class SwordGames {
 
 	triggerPopup(message = '') {
 		let close = () => {
-			console.debug('close click');
 			let modal = document.getElementById('message');
-			console.debug(close);
 			document.getElementById('modal-close').removeEventListener('click', close);
 			document.body.removeChild(modal);
 		};

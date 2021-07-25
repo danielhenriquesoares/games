@@ -200,15 +200,6 @@ export class TicTacToe extends SwordGames {
                 gridSizeSelect.removeAttribute('disabled');
 
 
-                /* 
-                this.statistics = {
-			totalGamesPlayed: 0,
-			history: [],
-			aggregatedTime: '00:00:00',
-			player1Wins: 0,
-			player2Wins: 0
-		};
-                 */
                 this.statistics.totalGamesPlayed += 1;
                 let historyLength = this.statistics.history.length;
                 historyLength < 9 ? this.statistics.history.push(playerVictorious === 1 ? 'P1' : 'P2') : this.statistics.history[historyLength - 1] = (playerVictorious === 1 ? 'P1' : 'P2');

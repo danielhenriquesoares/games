@@ -7,7 +7,7 @@
     "run": "npm run-script build && npm run-script start",
     "start": "webpack serve --open",
     "build": "webpack --config ./webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +21,8 @@
     "css-loader": "^6.1.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.0.6",
+    "jest-localstorage-mock": "^2.4.14",
     "mini-css-extract-plugin": "^2.1.0",
     "node-sass": "^6.0.1",
     "sass": "^1.35.2",
@@ -30,5 +32,12 @@
     "webpack": "^5.45.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
+  },
+  "jest": {
+    "resetMocks": false,
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ],
+    "testEnvironment": "jsdom"
   }
 }
