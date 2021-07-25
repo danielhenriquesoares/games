@@ -40,6 +40,11 @@ body {
         height: 200px;
         border-radius: 4px;
 
+        @include for-phone-only {
+            width: 50%;
+            height: 150px;
+        }
+
         h1 {
             display: flex;
             justify-content: center;
@@ -267,6 +272,7 @@ body {
                     text-align: center;
                     flex: 1 0 auto;
                     height:auto;
+                    cursor: pointer;
         
                     &:before {
                         content:'';
@@ -474,6 +480,10 @@ body {
                                         & + .played-match {
                                             margin-left: 4px;
                                         }
+
+                                        &.played {
+                                            background-color: $main1;
+                                        }
                                     }
 
                                     & > .played-match-rectangular {
@@ -481,9 +491,14 @@ body {
                                         height: 24px;
                                         border: 1px solid $main2;
                                         background-color: $white;
+                                        line-height: 24px;
 
                                         & + .played-match-rectangular {
                                             margin-left: 4px;
+                                        }
+
+                                        &.played {
+                                            background-color: $main1;
                                         }
                                     }
                                 }

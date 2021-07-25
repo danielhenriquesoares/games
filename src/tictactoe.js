@@ -24,6 +24,8 @@ export class TicTacToe extends SwordGames {
 
         super.highlightSelectedPlayer(true);
         this.clock();
+
+        this.updateStatistics();
     }
 
     buildRows() {
@@ -157,23 +159,82 @@ export class TicTacToe extends SwordGames {
                 
                 boardCell.classList.add(`player${this.player}Win`, 'winning-cell');
                 boardCell.classList.remove(`player${this.player}`);
-
-                setTimeout(() => {
-                    this.restartGame();
-                }, 4000);
             }
+
+            setTimeout(() => {
+                this.restartGame();
+            }, 4000);
 
 
             this.roundWinsByPlayer['player'+this.player] += 1;
             // update player count
             this.updatePlayerCount();
 
+            // first player to get 5 rounds is te winner
             if (this.roundWinsByPlayer.player1 === 5 || this.roundWinsByPlayer.player2 === 5) {
-                // reset everything
-                // display congrats message and scroll to next section
+                clearInterval(this.clockId);
 
-                // first player to get 5 rounds is the winner
-                //this.restartGame();
+                let playerVictorious = this.roundWinsByPlayer.player1 === 5 ? 1 : 2;
+                // display congrats message and scroll to next section
+                super.triggerPopup(playerVictorious === 1 ? 'player1' : 'player2');
+
+                //reset time counters
+                document.querySelectorAll('[data-time-counter]').forEach(element => {
+                    element.innerText = this.timeCounter();
+                });
+
+                document.querySelectorAll('[data-player-count-id]').forEach(element => {
+                    element.innerText = 0;
+                });
+
+                // hide game area
+                document.querySelectorAll('[data-game-area]').forEach(element => {
+                    element.style.visibility = 'hidden';
+                });
+
+                document.getElementById('time-counter').style.visibility = 'hidden';
+                document.getElementById('board').innerHTML = '';
+
+                let gridSizeSelect = document.getElementById('select-grid-size');
+                gridSizeSelect.value = '---';
+                gridSizeSelect.removeAttribute('disabled');
+
+
+                /* 
+                this.statistics = {
+			totalGamesPlayed: 0,
+			history: [],
+			aggregatedTime: '00:00:00',
+			player1Wins: 0,
+			player2Wins: 0
+		};
+                 */
+                this.statistics.totalGamesPlayed += 1;
+                let historyLength = this.statistics.history.length;
+                historyLength < 9 ? this.statistics.history.push(playerVictorious === 1 ? 'P1' : 'P2') : this.statistics.history[historyLength - 1] = (playerVictorious === 1 ? 'P1' : 'P2');
+                this.statistics.aggregatedTime = this.timeAccumulator(this.timeCounter());
+                if (playerVictorious === 1) {
+                    this.statistics.player1Wins += 1;
+                } else {
+                    this.statistics.player2Wins += 1;
+                }
+
+                // reset everything
+                this.roundWinsByPlayer.player1 = 0;
+                this.roundWinsByPlayer.player2 = 0;
+		        this.boardStatus.length = 0;
+                this.winningConditions.length = 0;
+                this.currentTimeSpent = 0;
+                this.onDestroy();
+
+                // update statistics
+                this.updateStatistics(false);
+
+                localStorage.setItem('stats', JSON.stringify(this.statistics));
+
+                // scroll
+                document.getElementsByClassName('statistics-container')[0].scrollIntoView({behavior: 'smooth', block: 'center'});
+
             }
 
             return;
@@ -186,8 +247,6 @@ export class TicTacToe extends SwordGames {
             this.restartGame();
             return;
         }
-
-        super.triggerPopup('daniel');
 
         this.managePlayerChange();
     }
